@@ -19,8 +19,11 @@ func main() {
 		unregister: make(chan *subscription),
 	}
 
+	go hub.run()
+
 	router.HandleFunc("/ws/{id}", func(w http.ResponseWriter, r *http.Request) {
-		serveWs(hub, w, r)
+		vars := mux.Vars(r)
+		serveWs(hub, w, r, vars["id"])
 	})
 
 	port := os.Getenv("PORT")

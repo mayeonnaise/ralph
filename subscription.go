@@ -112,14 +112,14 @@ func (s *subscription) writePump() {
 	}
 }
 
-func serveWs(hub *signalhub, w http.ResponseWriter, r *http.Request) {
+func serveWs(hub *signalhub, w http.ResponseWriter, r *http.Request, id string) {
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println(err)
 		return
 	}
 
-	sub := &subscription{hub: hub, conn: conn, send: make(chan []byte, 256)}
+	sub := &subscription{ID: id, hub: hub, conn: conn, send: make(chan []byte, upgrader.ReadBufferSize)}
 	sub.hub.register <- sub
 
 	go sub.writePump()

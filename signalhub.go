@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type signalhub struct {
 	peers      map[string]*subscription
 	broadcast  chan broadcastMsg
@@ -16,6 +18,7 @@ func (s *signalhub) run() {
 	for {
 		select {
 		case peer := <-s.register:
+			fmt.Printf("Peer %s joined", peer.ID)
 			s.peers[peer.ID] = peer
 		case peer := <-s.unregister:
 			if _, ok := s.peers[peer.ID]; ok {
