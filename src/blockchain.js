@@ -42,7 +42,7 @@ class Block {
     }
 
     async verify() {
-        const prefix = (await this.hash()).slice(0, 4)
+        const prefix = (await this.hash()).slice(0, 2)
         return prefix.every(v => v === 0)
     }
 
