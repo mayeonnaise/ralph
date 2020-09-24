@@ -7,14 +7,35 @@
   <title>Blockchain</title>
   <meta name="description" content="Blockchain via WebRTC">
   <meta name="author" content="mayeonnaise">
+  <link rel="stylesheet" href="./stylesheet.css">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
 
 </head>
 <body>
-    <div id="blockchain">
+    <div class="loading" id="loading">
+      <span class="loadingtitle">ANKU</span>
+      <span class="loadingsubtitle">Anthology Haiku</span>
+      <span class="findingpeers">Finding peers...</span>
     </div>
-    <input id="text">
-    </input>
-    <button id="submit"></button>
+    <div class="main" id="main" style="display:none">
+      <div class="header">
+        <span class="title">ANKU</span>
+        <div class="navbar">
+          <span>ABOUT</span>
+          <span>CONTACT</span>
+        </div>
+      </div>
+      <div id="blockchain" class="blockchain">
+        <div class="submitdiv" id="submitdiv">
+          <input id="text", class="text">
+          </input>
+          <div id="submit" class="submit">
+            <img src="feather-pen.svg" class="quill">
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="./main.js"></script>
 </body>
 </html>

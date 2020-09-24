@@ -11,10 +11,14 @@ function parseMessage(event) {
     console.log(data)
     switch (data.type) {
         case "block": {
-            document.getElementById("blockchain").innerHTML += data.block.payload
             miner.terminate()
             const block = Object.assign(new Block, data.block)
             blockchain.appendBlock(block)
+            if (block.payload !== "") {
+                var element = document.createElement("p")
+                element.appendChild(document.createTextNode(block.payload))
+                document.getElementById("blockchain").insertBefore(element, document.getElementById("submitdiv"))
+            }
             break
         }
         case "ledger": {
@@ -27,12 +31,15 @@ function parseMessage(event) {
                 newBlock = Object.assign(new Block, block)
                 newChain.push(newBlock)
                 console.log(newBlock)
-                newOutput += newBlock.payload
+                if (newBlock.payload !== "") {
+                    var element = document.createElement("p")
+                    element.appendChild(document.createTextNode(newBlock.payload))
+                    document.getElementById("blockchain").insertBefore(element, document.getElementById("submitdiv"))
+                }
             }
             if (blockchain.chain.length < ledger.chain.length) {
                 blockchain.chain = newChain
             }
-            document.getElementById("blockchain").innerHTML = newOutput
             break
         }
     }
@@ -46,15 +53,24 @@ function prepareLedgerMessage() {
     return JSON.stringify(msg)
 }
 
+function hideLoadingPage() {
+    document.getElementById("loading").setAttribute("style", "display:none;")
+    document.getElementById("main").setAttribute("style", "display:flex;")
+}
 
-const webrtcClient = new WebRTCClient(id, parseMessage, prepareLedgerMessage)
+
+const webrtcClient = new WebRTCClient(id, parseMessage, prepareLedgerMessage, hideLoadingPage)
 
 if (blockchain.currentBlock !== null) {
     document.getElementById("submit").disabled = false
 }
 
 function mineSuccessCallback(block) {
-    document.getElementById("blockchain").innerHTML += block.payload
+    if (block.payload !== "") {
+        var element = document.createElement("p")
+        element.appendChild(document.createTextNode(block.payload))
+        document.getElementById("blockchain").insertBefore(element, document.getElementById("submitdiv"))
+    }
     alertPeers(block)
     blockchain.appendBlock(block)
     document.getElementById("submit").disabled = false

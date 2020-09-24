@@ -1,5 +1,5 @@
 class WebRTCClient {
-    constructor(id, parseMessageCallback, prepareLedgerMsg) {
+    constructor(id, parseMessageCallback, prepareLedgerMsg, hideLoadingPage) {
         this.id = id
         this.ws = new WebSocket("ws://localhost:80/ws/" + id)
         this.configuration = {'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]}
@@ -8,6 +8,7 @@ class WebRTCClient {
         this.connectionsStatus = {}
         this.parseMessageCallback = parseMessageCallback
         this.prepareLedgerMsg = prepareLedgerMsg
+        this.hideLoadingPage = hideLoadingPage
         this.setupWebsocket()
     }
 
@@ -185,11 +186,29 @@ class WebRTCClient {
           }
     
         peerConnection.oniceconnectionstatechange = function (event) {
+            console.log(event)
             if (peerConnection.connectionState === 'connected') {
                 this.connectionsStatus[sendeeID] = true
                 console.log("Connected to " + sendeeID)
             } else {
                 console.log("failed")
+            }
+        }.bind(this)
+
+        peerConnection.onconnectionstatechange = function(event) {
+            switch(peerConnection.connectionState) {
+              case "connected":
+                if (document.getElementById("loading").style.display !== "none") {
+                    this.hideLoadingPage()
+                }
+                break;
+              case "disconnected":
+              case "failed":
+                // One or more transports has terminated unexpectedly or in an error
+                break;
+              case "closed":
+                // The connection has been closed
+                break;
             }
         }.bind(this)
     }
