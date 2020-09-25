@@ -20,13 +20,26 @@
     </div>
     <div class="main" id="main" style="display:none">
       <div class="header">
-        <span class="title">ANKU</span>
+        <span class="title" id="title">ANKU</span>
         <div class="navbar">
           <span>ABOUT</span>
           <span>CONTACT</span>
         </div>
       </div>
-      <div id="blockchain" class="blockchain">
+      <div id="contents" class="contents">
+        <span class="contentstitle">Contents</span>
+        <div class="contentspage" id="contentspage">
+        </div>
+        <div id="createhaiku" class="createhaiku">
+          <input id="haikuname", class="haikuname">
+          </input>
+          <div id="submithaiku" class="submithaiku">
+            <span>Create Haiku</span>
+            <img src="feather-pen.svg" class="haikuquill">
+          </div>
+        </div>
+      </div>
+      <div id="blockchain" class="blockchain" style="display:none">
         <div class="submitdiv" id="submitdiv">
           <input id="text", class="text">
           </input>

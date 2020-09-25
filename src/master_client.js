@@ -8,7 +8,6 @@ function parseMessage(event) {
     const data = JSON.parse(event.data)
     switch (data.type) {
         case "block": {
-            document.getElementById("blockchain").innerHTML += data.block.payload
             const block = Object.assign(new Block, data.block)
             blockchain.appendBlock(block)
             break

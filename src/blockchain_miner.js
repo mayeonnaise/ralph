@@ -4,9 +4,9 @@ class BlockchainMiner {
         this.mining_status = true
     }
 
-    async mine(successCallback, terminateCallback) {
+    async mine(value, successCallback, terminateCallback) {
         this.mining_status = true
-        await this.blockchain.newBlock(document.getElementById("text").value)
+        await this.blockchain.newBlock(value)
         while ((! (await this.blockchain.currentBlock.verify())) && this.mining_status) {
             this.blockchain.currentBlock.nonce += 1
         }

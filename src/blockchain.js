@@ -1,3 +1,4 @@
+let {Haiku} = require("./haiku")
 class Blockchain {
     constructor(isGenesis) {
         this.chain = []
@@ -28,7 +29,7 @@ class Blockchain {
     }
 
     genesis() {
-        const block = new Block("", new Uint8Array([0, 0, 0, 0]))
+        const block = new Block(new Haiku("genesis", 0, ""), new Uint8Array([0, 0, 0, 0]))
         this.chain.push(block)
     }
 }
