@@ -1,0 +1,93 @@
+.navbar span {
+  cursor: pointer;
+}
+
+.navbar span:hover {
+  text-decoration: underline;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  height: 80vh;
+  align-items: center;
+}
+
+.contents {
+  width: 70vw;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentsTitle {
+  font-size: 45px;
+  font-family: "IM Fell Double Pica", serif;
+  text-align: center;
+}
+
+.contentsPage {
+  overflow: scroll;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  border-bottom: 1px solid darkgray;
+}
+
+.haiku {
+  font-size: 30px;
+  font-family: "IM Fell Double Pica", serif;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.haikuIcon {
+  width: 30px;
+  cursor: pointer;
+}
+
+.haikuName {
+  height: 45px;
+  width: 70%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  font-family: "IM Fell Double Pica", serif;
+  font-size: 20px;
+}
+
+.haikuName:focus {
+  outline-color: bisque;
+}
+
+.haikuQuill {
+  margin-left: 1vw;
+  width: 30px;
+}
+
+.createHaiku {
+  margin-top: 4vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.submitHaiku {
+  align-items: center;
+  font-size: 20px;
+  font-family: "IM Fell Double Pica", serif;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.submitHaiku:hover {
+  text-decoration: underline;
+}

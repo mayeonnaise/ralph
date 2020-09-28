@@ -1,0 +1,20 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  font-family: "Amatic SC", cursive;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.loadingTitle {
+  font-size: 80px;
+}
+
+.loadingSubtitle {
+  font-size: 40px;
+}
+
+.findingPeers {
+  font-size: 25px;
+}

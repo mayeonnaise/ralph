@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  height: 10vh;
+  padding-left: 1vw;
+  padding-right: 5vw;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Amatic SC", cursive;
+  font-size: 25px;
+  width: 90vw;
+}
+
+.headerTitle {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 10vw;
+}

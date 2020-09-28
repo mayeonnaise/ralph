@@ -1,0 +1,46 @@
+.haikuPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+  margin-bottom: 5vh;
+  padding: 3vw;
+  font-family: "IM Fell Double Pica", serif;
+  font-size: 35px;
+  width: 65vw;
+}
+
+.submitLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+}
+
+.submitLineButton {
+  margin-left: 3%;
+  width: 5vw;
+  cursor: pointer;
+  height: 100%;
+}
+
+.submitLineQuill {
+  width: 80%;
+}
+
+.line {
+  height: 45px;
+  width: 90%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  font-family: "IM Fell Double Pica", serif;
+  font-size: 25px;
+}
+
+.line:focus {
+  outline-color: bisque;
+}
